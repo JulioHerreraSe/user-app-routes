@@ -1,5 +1,4 @@
+<navbar [users]="users" />
 <div class="container my-4">
-    <h3>{{title}}</h3>
-    <button class="btn btn-primary" (click)="setOpen()">{{open == true? 'Close form': 'Create user'}}</button>
-    <router-outlet></router-outlet>
+    <router-outlet/>
 </div>

@@ -1,5 +1,5 @@
 <h3>{{title}}</h3>
-<button class="btn btn-primary">Create user</button>
+<button class="btn btn-primary my-3" [routerLink]="['/users/create']">Create user</button>
 @if (users.length == 0) {
     <div class="alert alert-warning">No hay resgistros en el sistema</div>
 } @else {
