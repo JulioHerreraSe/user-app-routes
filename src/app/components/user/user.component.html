@@ -1,5 +1,7 @@
 <h3>{{title}}</h3>
-<button class="btn btn-primary my-3" [routerLink]="['/users/create']">Create user</button>
+@if (admin) {
+    <button class="btn btn-primary my-3" [routerLink]="['/users/create']">Create user</button>
+}
 @if (users.length == 0) {
     <div class="alert alert-warning">No hay resgistros en el sistema</div>
 } @else {
@@ -10,8 +12,10 @@
                 <th>Lastname</th>
                 <th>Email</th>
                 <th>Username</th>
-                <th>Remove</th>
-                <th>Update</th>
+                @if (admin) {
+                    <th>Remove</th>
+                    <th>Update</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -21,10 +25,13 @@
                     <td>{{user.lastname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.username}}</td>
-                    <td><button class="btn btn-danger btn-sm" (click)="onRemoveUser(user.id)">Remove</button></td>
-                    <td><button class="btn btn-primary btn-sm" (click)="onSelectedUser(user)">Update</button></td>
+                    @if (admin) {
+                        <td><button class="btn btn-danger btn-sm" (click)="onRemoveUser(user.id)">Remove</button></td>
+                        <td><button class="btn btn-primary btn-sm" [routerLink]="['/users/edit', user.id]">Update</button></td>
+                    }
                 </tr>
             }
         </tbody>
     </table>
+    <paginator [paginator]="paginator" [url]="'/users/page'"/>
 }

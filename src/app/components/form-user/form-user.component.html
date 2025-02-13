@@ -6,56 +6,43 @@
         <div class="card-body">
             <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
                 <div>
-                    <input placeholder="Name" name="name" [(ngModel)] = "user.name" class="form-control my-2" required #name="ngModel">
-                    @if (name.invalid && (name.dirty || name.touched)) {
-                        @if (name.errors!['required']) {
-                            <div class="text-danger">El nombre es requerido</div>
-                        }
+                    <input placeholder="Name" name="name" [(ngModel)] = "user.name" class="form-control my-2">
+                    @if (errors.name) {
+                        <div class="text-danger">{{errors.name}}</div>
                     }
                 </div>
                 <div>
-                    <input placeholder="Lastname" name="lastname" [(ngModel)] = "user.lastname" class="form-control my-2" required #lastname="ngModel">
-                    @if (lastname.invalid && (lastname.dirty || lastname.touched)) {
-                        @if (lastname.errors!['required']) {
-                            <div class="text-danger">El apellido es requerido</div>
-                        }
+                    <input placeholder="Lastname" name="lastname" [(ngModel)] = "user.lastname" class="form-control my-2">
+                    @if (errors.lastname) {
+                        <div class="text-danger">{{errors.lastname}}</div>
                     }
                 </div>
                 <div>
-                    <input placeholder="Email" name="email" [(ngModel)] = "user.email" class="form-control my-2" required type="email" email #email="ngModel">
-                    @if (email.invalid && (email.dirty || email.touched)) {
-                        @if (email.errors!['required']) {
-                            <div class="text-danger">El email es requerido</div>
-                        }
-                        @if (email.errors!['email']) {
-                            <div class="text-danger">El email no tiene el formato correcto</div>
-                        }
+                    <input placeholder="Email" name="email" [(ngModel)] = "user.email" class="form-control my-2" type="email">
+                    @if (errors.email) {
+                        <div class="text-danger">{{errors.email}}</div>
                     }
                 </div>
                 <div>
-                    <input placeholder="Username" name="username" [(ngModel)] = "user.username" class="form-control my-2" required minlength="8"  #username="ngModel">
-                    @if (username.invalid && (username.dirty || username.touched)) {
-                        @if (username.errors!['required']) {
-                            <div class="text-danger">El nombre de usuario es requerido</div>
-                        }
-                        @if (username.errors!['minlength']) {
-                            <div class="text-danger">El nombre de usuario debe tener al menos 8 caracteres</div>
-                        }
+                    <input placeholder="Username" name="username" [(ngModel)] = "user.username" class="form-control my-2">
+                    @if (errors.username) {
+                        <div class="text-danger">{{errors.username}}</div>
                     }
                 </div>
-                <div>
-                    <input placeholder="Password" type="password" name="password" [(ngModel)] = "user.password" class="form-control my-2" required minlength="6" #password="ngModel">
-                    @if (password.invalid && (password.dirty || password.touched)) {
-                        @if (password.errors!['required']) {
-                            <div class="text-danger">La contraseña es requerida</div>
+                @if (user.id == null) {
+                    <div>
+                        <input placeholder="Password" type="password" name="password" [(ngModel)]="user.password" class="form-control my-2">
+                        @if (errors.password) {
+                            <div class="text-danger">{{errors.password}}</div>
                         }
-                        @if (password.errors!['minlength']) {
-                            <div class="text-danger">La contraseña debe tener al menos 6 caracteres</div>
-                        }
-                    }
+                    </div>
+                }
+                <div class="form-check my-2">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="user.admin" name="admin">
+                    <label class="form-check-label">Admin</label>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary my-2" [disabled]="userForm.invalid">{{(user.id > 0)? 'Update': 'Create'}}</button>
+                    <button type="submit" class="btn btn-primary my-2">{{(user.id > 0)? 'Update': 'Create'}}</button>
                     <button type="button" class="btn btn-secondary m-2" (click)="onClear(userForm)">Clear</button>
                 </div>
             </form>

@@ -1,36 +1,50 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { User } from '../../models/user';
-import { SharingDataService } from '../../services/sharing-data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
+import { Store } from '@ngrx/store';
+import { add, find, resetUser, update } from '../../store/users/users.actions';
 
 @Component({
   selector: 'form-user',
   imports: [FormsModule],
   templateUrl: './form-user.component.html'
 })
-export class FormUserComponent {
+export class FormUserComponent implements OnInit{
 
   user: User;
 
-  constructor(private sharingData: SharingDataService, private router: Router) {
-    if (this.router.getCurrentNavigation()?.extras.state) {
-      this.user = this.router.getCurrentNavigation()?.extras.state!['user'];
-    } else {
-      this.user = new User();
-    }
+  errors: any = {};
+
+  constructor(private route: ActivatedRoute, private store: Store<{users: any}>) {
+    this.user = new User();
+    this.store.select('users').subscribe(state => {
+      this.errors = state.errors;
+      this.user = {... state.user};
+    });
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(resetUser());
+    this.route.paramMap.subscribe(params => {
+      const id: number = +(params.get('id') || '0');
+
+      if(id > 0) {
+        this.store.dispatch(find({id}));
+      }
+    });
   }
 
   onSubmit(userForm: NgForm): void {
-    if(userForm.valid) {
-      this.sharingData.newUserEventEmitter.emit(this.user);
-      console.log(this.user);
+    if(this.user.id > 0) {
+      this.store.dispatch(update({userUpdated: this.user}));
+    } else {
+      this.store.dispatch(add({userNew: this.user}));
     }
-    this.onClear(userForm);
   }
 
   onClear(userForm: NgForm): void {
-    this.user = new User();
+    this.store.dispatch(resetUser());
     userForm.reset();
     userForm.resetForm();
   }

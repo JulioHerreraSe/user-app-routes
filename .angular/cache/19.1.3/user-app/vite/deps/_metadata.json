@@ -1,49 +1,79 @@
 {
-  "hash": "f0ddb515",
-  "configHash": "7a34653d",
-  "lockfileHash": "49c9fb17",
-  "browserHash": "92ac3032",
+  "hash": "02301bfd",
+  "configHash": "5d5bfc27",
+  "lockfileHash": "b5cfdefa",
+  "browserHash": "6be750bd",
   "optimized": {
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "bd9ab822",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "a27de63e",
+      "fileHash": "6e551ab4",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "5d19739d",
+      "fileHash": "38e569eb",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "97a6b93e",
+      "fileHash": "573545d4",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "e5458e1f",
+      "fileHash": "28e547f5",
+      "needsInterop": false
+    },
+    "@ngrx/effects": {
+      "src": "../../../../../../node_modules/@ngrx/effects/fesm2022/ngrx-effects.mjs",
+      "file": "@ngrx_effects.js",
+      "fileHash": "6582b170",
+      "needsInterop": false
+    },
+    "@ngrx/store": {
+      "src": "../../../../../../node_modules/@ngrx/store/fesm2022/ngrx-store.mjs",
+      "file": "@ngrx_store.js",
+      "fileHash": "63d6c7d9",
+      "needsInterop": false
+    },
+    "@ngrx/store-devtools": {
+      "src": "../../../../../../node_modules/@ngrx/store-devtools/fesm2022/ngrx-store-devtools.mjs",
+      "file": "@ngrx_store-devtools.js",
+      "fileHash": "5f5cd26a",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
-      "fileHash": "5ba3c8a5",
+      "fileHash": "b9cbe3b6",
       "needsInterop": false
     },
     "sweetalert2": {
       "src": "../../../../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js",
       "file": "sweetalert2.js",
-      "fileHash": "341be979",
+      "fileHash": "73259e76",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-HQCMRLSC": {
-      "file": "chunk-HQCMRLSC.js"
+    "chunk-MNGJ2VQS": {
+      "file": "chunk-MNGJ2VQS.js"
+    },
+    "chunk-QO3IDKZY": {
+      "file": "chunk-QO3IDKZY.js"
+    },
+    "chunk-UIV6CXNJ": {
+      "file": "chunk-UIV6CXNJ.js"
     },
     "chunk-AHXLOXL3": {
       "file": "chunk-AHXLOXL3.js"
